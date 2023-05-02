@@ -1,0 +1,21 @@
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(250, 242, 242);
+
+  a{
+    padding-right: 5px;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    padding-left: 5px;
+  }
+
+  a:hover {
+    color: rgb(37, 37, 192);
+  }
+}
