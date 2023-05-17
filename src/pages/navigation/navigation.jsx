@@ -1,10 +1,11 @@
+// /* eslint-disable react/prop-types */
+import { useContext } from "react";
 import { Link } from "react-router-dom"
-import Logo from '../../assets/crown.svg'
+
 
 import React from "react";
 import {
     Navbar,
-    MobileNav,
     Typography,
     Button,
     Menu,
@@ -14,24 +15,30 @@ import {
     Avatar,
     Card,
     IconButton,
+    Collapse,
 } from "@material-tailwind/react";
 import {
     UserCircleIcon,
     ChevronDownIcon,
-    PowerIcon,
     RocketLaunchIcon,
     Bars2Icon,
 } from "@heroicons/react/24/outline";
 
+
+import Logo from '../../assets/crown.svg'
+import { UserContext } from "../../contexts/user.context";
+import { signOutUser } from "../../utils/firebase/firebase.utlis";
+import './navigation.scss'
+
+
 // profile menu component
 const profileMenuItems = [
-    {
-        label: "My Profile",
-        icon: UserCircleIcon,
-    },
+    // {
+    //     label: "My Profile",
+    //     icon: UserCircleIcon,
+    // },
     {
         label: "Sign In",
-        icon: PowerIcon,
         href: '/auth',
     },
 ];
@@ -39,6 +46,12 @@ const profileMenuItems = [
 function ProfileMenu() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const closeMenu = () => setIsMenuOpen(false);
+
+    const { currentUser, setCurrentUser } = useContext(UserContext);
+    const signOutHandler = async () => {
+        await signOutUser();
+        setCurrentUser(null)
+    }
 
     return (
         <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
@@ -63,33 +76,36 @@ function ProfileMenu() {
                 </Button>
             </MenuHandler>
             <MenuList className="p-1">
-                {profileMenuItems.map(({ label, icon }, key) => {
+                {profileMenuItems.map(({ label }, key) => {
                     const isLastItem = key === profileMenuItems.length - 1;
                     return (
                         <MenuItem
                             key={label}
                             onClick={closeMenu}
                             className={`flex items-center gap-2 rounded ${isLastItem
-                                ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
+                                ? "hover:bg-gray-200 focus:bg-gray-200 active:bg-gray-200"
                                 : ""
                                 }`}
                         >
-                            {React.createElement(icon, {
-                                className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
-                                strokeWidth: 2,
+                            {
+                                currentUser ? (
+                                    <span onClick={signOutHandler}> Signout</span>
+                                ) : (
+                                    <Link to='/auth'>
+                                        <Typography
+                                            as="span"
+                                            variant="small"
+                                            className="font-normal"
+                                            color={isLastItem ? "gray" : "inherit"}
 
-                            })}
-                            <Link to='/auth'>
-                                <Typography
-                                    as="span"
-                                    variant="small"
-                                    className="font-normal"
-                                    color={isLastItem ? "red" : "inherit"}
+                                        >
+                                            signin
+                                        </Typography>
+                                    </Link>
 
-                                >
-                                    {label}
-                                </Typography>
-                            </Link>
+                                )
+                            }
+
                         </MenuItem>
                     );
                 })}
@@ -112,7 +128,7 @@ function NavListMenu() {
     };
 
     const renderItems = navListMenuItems.map(({ title, description, href }) => (
-        <a href={href} key={title}>
+        <Link to={href} key={title}>
             <MenuItem>
                 <Typography variant="h6" color="blue-gray" className="mb-1">
                     {title}
@@ -121,7 +137,7 @@ function NavListMenu() {
                     {description}
                 </Typography>
             </MenuItem>
-        </a>
+        </Link>
     ));
 
     return (
@@ -187,6 +203,9 @@ export default function Navigation() {
     const [isNavOpen, setIsNavOpen] = React.useState(false);
     const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
 
+    const { currentUser } = useContext(UserContext);
+
+
     React.useEffect(() => {
         window.addEventListener(
             "resize",
@@ -220,9 +239,13 @@ export default function Navigation() {
                 </IconButton>
                 <ProfileMenu />
             </div>
-            <MobileNav open={isNavOpen} className="overflow-scroll">
+            <Collapse open={isNavOpen} className="overflow-scroll">
                 <NavList />
-            </MobileNav>
+            </Collapse>
         </Navbar>
     );
 }
+
+
+
+
