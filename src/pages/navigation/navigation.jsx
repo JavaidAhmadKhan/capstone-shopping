@@ -2,7 +2,6 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom"
 
-
 import React from "react";
 import {
     Navbar,
@@ -33,10 +32,6 @@ import './navigation.scss'
 
 // profile menu component
 const profileMenuItems = [
-    // {
-    //     label: "My Profile",
-    //     icon: UserCircleIcon,
-    // },
     {
         label: "Sign In",
         href: '/auth',
@@ -47,11 +42,7 @@ function ProfileMenu() {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     const closeMenu = () => setIsMenuOpen(false);
 
-    const { currentUser, setCurrentUser } = useContext(UserContext);
-    const signOutHandler = async () => {
-        await signOutUser();
-        setCurrentUser(null)
-    }
+    const { currentUser } = useContext(UserContext);
 
     return (
         <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
@@ -89,7 +80,7 @@ function ProfileMenu() {
                         >
                             {
                                 currentUser ? (
-                                    <span onClick={signOutHandler}> Signout</span>
+                                    <span onClick={signOutUser}> Signout</span>
                                 ) : (
                                     <Link to='/auth'>
                                         <Typography
@@ -102,7 +93,6 @@ function ProfileMenu() {
                                             signin
                                         </Typography>
                                     </Link>
-
                                 )
                             }
 
@@ -200,10 +190,11 @@ function NavList() {
 }
 
 export default function Navigation() {
+
     const [isNavOpen, setIsNavOpen] = React.useState(false);
     const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
 
-    const { currentUser } = useContext(UserContext);
+    // const { currentUser } = useContext(UserContext);
 
 
     React.useEffect(() => {

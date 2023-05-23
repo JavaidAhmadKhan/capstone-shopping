@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utlis'
 import './signup-form.scss'
@@ -7,7 +7,6 @@ import './signup-form.scss'
 import FormInput from '../FormInput/FormInput'
 import Button from '../Button/Button'
 
-import { UserContext } from '../../contexts/user.context'
 
 const defaultFormFields = {
     displayName: "",
@@ -19,8 +18,6 @@ const defaultFormFields = {
 const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { displayName, email, password, confirmPassword } = formFields;
-
-    const { setCurrentUser } = useContext(UserContext);
 
     const resetFormFields = () => {
         setFormFields(defaultFormFields)
@@ -36,8 +33,6 @@ const SignUpForm = () => {
 
         try {
             const { user } = await createAuthUserWithEmailAndPassword(email, password);
-
-            setCurrentUser(user)
 
             await createUserDocumentFromAuth(user, { displayName })
             resetFormFields()

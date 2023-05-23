@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 
 import { createUserDocumentFromAuth, signInWithGooglePopup, signInAuthUserEmailAndPassword } from '../../utils/firebase/firebase.utlis'
 
@@ -7,7 +7,7 @@ import FormInput from '../FormInput/FormInput'
 import Button from '../Button/Button'
 
 import './signin-form.scss'
-import { UserContext } from '../../contexts/user.context'
+
 
 const defaultFormFields = {
     email: "",
@@ -18,26 +18,19 @@ const SignInForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const { email, password, } = formFields;
 
-    const { setCurrentUser } = useContext(UserContext)
-
     const resetFormFields = () => {
         setFormFields(defaultFormFields)
     }
 
     const signInWithGoogle = async () => {
-        const { user } = await signInWithGooglePopup();
-        await createUserDocumentFromAuth(user);
-        console.log({ user })
+        signInWithGooglePopup();
     }
-
-
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
-            const { user } = await signInAuthUserEmailAndPassword(email, password);
-            setCurrentUser(user);
+            await signInAuthUserEmailAndPassword(email, password);
             resetFormFields();
         } catch (error) {
             switch (error.code) {
