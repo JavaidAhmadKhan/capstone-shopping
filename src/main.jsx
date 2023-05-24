@@ -8,17 +8,20 @@ import Footer from './components/Footer/Footer';
 import Navigation from './pages/navigation/navigation';
 
 import { UserProvider } from './contexts/user.context';
+import { ProductsProvider } from './contexts/products.context';
 
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-    <React.StrictMode>
+  <React.StrictMode>
+    <BrowserRouter>
       <UserProvider>
-      <Navigation />
-        <App />
+        <ProductsProvider>
+          <Navigation />
+          <App />
+        </ProductsProvider>
       </UserProvider>
       <Footer />
-    </React.StrictMode>
-  </BrowserRouter>
+    </BrowserRouter>
+  </React.StrictMode >
 )

@@ -1,13 +1,11 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from 'react'
 
-import { createUserDocumentFromAuth, signInWithGooglePopup, signInAuthUserEmailAndPassword } from '../../utils/firebase/firebase.utlis'
+import { signInWithGooglePopup, signInAuthUserEmailAndPassword } from '../../utils/firebase/firebase.utlis'
 
 import FormInput from '../FormInput/FormInput'
 import Button from '../Button/Button'
-
 import './signin-form.scss'
-
 
 const defaultFormFields = {
     email: "",

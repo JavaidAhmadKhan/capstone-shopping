@@ -177,7 +177,7 @@ function NavList() {
                         href={href}
                         variant="small"
                         color="blue-gray"
-                        className="font-normal"
+                        className="font-semibold"
                     >
                         <MenuItem className="flex items-center gap-2">
                             {label}
