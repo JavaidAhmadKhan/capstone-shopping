@@ -25,9 +25,13 @@ import {
 
 
 import Logo from '../../assets/crown.svg'
+import CartIcon from "../../components/CartIcon/CartIcon";
+
 import { UserContext } from "../../contexts/user.context";
+import { CartContext } from "../../contexts/cart.context";
 import { signOutUser } from "../../utils/firebase/firebase.utlis";
 import './navigation.scss'
+import CartdropDown from "../../components/CartdropDown/CartdropDown";
 
 
 // profile menu component
@@ -43,6 +47,7 @@ function ProfileMenu() {
     const closeMenu = () => setIsMenuOpen(false);
 
     const { currentUser } = useContext(UserContext);
+    // const { isCartOpen } = useContext(CartContext)
 
     return (
         <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
@@ -164,11 +169,17 @@ const navListItems = [
         icon: UserCircleIcon,
         href: '/shop',
     },
+    {
+        label: <CartIcon />
+    },
+    // {
+    //     label: <CartdropDown />
+    // },
 ];
 
 function NavList() {
     return (
-        <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
+        <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center ">
             <NavListMenu />
             {navListItems.map(({ label, href }) => (
                 <Link to={href} key={label}>
@@ -179,13 +190,17 @@ function NavList() {
                         color="blue-gray"
                         className="font-semibold"
                     >
-                        <MenuItem className="flex items-center gap-2">
+                        <MenuItem className="">
                             {label}
                         </MenuItem>
+
                     </Typography>
+
                 </Link>
             ))}
+
         </ul>
+
     );
 }
 
@@ -193,6 +208,7 @@ export default function Navigation() {
 
     const [isNavOpen, setIsNavOpen] = React.useState(false);
     const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
+    const { isCartOpen } = useContext(CartContext)
 
     // const { currentUser } = useContext(UserContext);
 
@@ -206,7 +222,9 @@ export default function Navigation() {
 
     return (
         <Navbar className="mx-auto mb-4 sticky inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4">
+
             <div className="relative mx-auto flex items-center text-blue-gray-900">
+
                 <Link to='/'>
                     <Typography
                         as="a"
@@ -216,7 +234,7 @@ export default function Navigation() {
                         <img src={Logo} alt="" />
                     </Typography>
                 </Link>
-                <div className="absolute top-2/4 left-2/4 hidden -translate-x-2/4 -translate-y-2/4 lg:block">
+                <div className="absolute top-2/4 left-[90%] hidden -translate-x-2/4 -translate-y-2/4 lg:block">
                     <NavList />
                 </div>
                 <IconButton
@@ -232,8 +250,10 @@ export default function Navigation() {
             </div>
             <Collapse open={isNavOpen} className="overflow-scroll">
                 <NavList />
+                {isCartOpen && <CartdropDown />}
             </Collapse>
         </Navbar>
+
     );
 }
 

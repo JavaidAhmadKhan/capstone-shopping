@@ -9,6 +9,7 @@ import Navigation from './pages/navigation/navigation';
 
 import { UserProvider } from './contexts/user.context';
 import { ProductsProvider } from './contexts/products.context';
+import { CartProvider } from './contexts/cart.context';
 
 
 
@@ -17,8 +18,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <UserProvider>
         <ProductsProvider>
-          <Navigation />
-          <App />
+          <CartProvider>
+            <Navigation />
+            <App />
+          </CartProvider>
         </ProductsProvider>
       </UserProvider>
       <Footer />
