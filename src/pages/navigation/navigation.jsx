@@ -54,14 +54,14 @@ function ProfileMenu() {
             <MenuHandler>
                 <Button
                     variant="text"
-                    color="blue-gray"
+                    color="black"
                     className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
                 >
                     <Avatar
                         variant="circular"
                         size="sm"
                         alt="candice wu"
-                        className="border border-blue-500 p-0.5"
+                        className="black"
                         src="https://avatars.githubusercontent.com/u/45966257?v=4"
                     />
                     <ChevronDownIcon
@@ -79,7 +79,7 @@ function ProfileMenu() {
                             key={label}
                             onClick={closeMenu}
                             className={`flex items-center gap-2 rounded ${isLastItem
-                                ? "hover:bg-gray-200 focus:bg-gray-200 active:bg-gray-200"
+                                ? "hover:bg-gray-200 focus:bg-gray-200 active:bg-black"
                                 : ""
                                 }`}
                         >
@@ -125,10 +125,10 @@ function NavListMenu() {
     const renderItems = navListMenuItems.map(({ title, description, href }) => (
         <Link to={href} key={title}>
             <MenuItem>
-                <Typography variant="h6" color="blue-gray" className="mb-1">
+                <Typography variant="h6" color="black" className="mb-1">
                     {title}
                 </Typography>
-                <Typography variant="small" color="gray" className="font-normal">
+                <Typography variant="small" color="black" className="font-normal">
                     {description}
                 </Typography>
             </MenuItem>
@@ -140,10 +140,10 @@ function NavListMenu() {
             <Menu open={isMenuOpen} handler={setIsMenuOpen}>
                 <MenuList
                     {...triggers}
-                    className="hidden w-[36rem] grid-cols-7 gap-3 overflow-visible lg:grid"
+                    className="hidden w-[36rem] grid-cols-7 gap-3 overflow-hidden lg:grid"
                 >
                     <Card
-                        color="blue"
+                        color="black"
                         shadow={false}
                         variant="gradient"
                         className="col-span-3 grid h-full w-full place-items-center rounded-md"
@@ -179,7 +179,7 @@ const navListItems = [
 
 function NavList() {
     return (
-        <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center ">
+        <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center text-black">
             <NavListMenu />
             {navListItems.map(({ label, href }) => (
                 <Link to={href} key={label}>
@@ -187,7 +187,7 @@ function NavList() {
                         as="a"
                         href={href}
                         variant="small"
-                        color="blue-gray"
+                        color="black"
                         className="font-semibold"
                     >
                         <MenuItem className="">
@@ -221,9 +221,9 @@ export default function Navigation() {
     }, []);
 
     return (
-        <Navbar className="mx-auto mb-4 sticky inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4">
+        <Navbar className="mx-auto mb-4 sticky inset-0 z-10 h-max max-w-full rounded-none py-2 px-4 lg:px-8 lg:py-4 shadow-md">
 
-            <div className="relative mx-auto flex items-center text-blue-gray-900">
+            <div className="relative mx-auto flex items-center ">
 
                 <Link to='/'>
                     <Typography
@@ -231,7 +231,7 @@ export default function Navigation() {
 
                         className="mr-4 ml-2 cursor-pointer py-1.5 font-medium"
                     >
-                        <img src={Logo} alt="" />
+                        <img src={Logo} alt="wolzon" />
                     </Typography>
                 </Link>
                 <div className="absolute top-2/4 left-[90%] hidden -translate-x-2/4 -translate-y-2/4 lg:block">
@@ -239,7 +239,7 @@ export default function Navigation() {
                 </div>
                 <IconButton
                     size="sm"
-                    color="blue-gray"
+                    color="black"
                     variant="text"
                     onClick={toggleIsNavOpen}
                     className="ml-auto mr-2 lg:hidden"

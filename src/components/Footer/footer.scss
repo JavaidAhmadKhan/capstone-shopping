@@ -2,26 +2,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 80px;
-  padding-bottom: 20px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-top: 60px;
+  padding: 30px;
+
 
   a {
     padding-right: 5px;
     font-size: 18px;
     font-weight: 600;
-    color: #3e4152;
   }
 
   p {
     font-size: 18px;
     font-weight: 600;
-    color: #3e4152;
     padding-left: 5px;
   }
 
   a:hover {
-    color: rgb(55, 55, 175);
+    color: rgb(31, 23, 105);
   }
 }

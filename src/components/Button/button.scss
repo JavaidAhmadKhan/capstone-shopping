@@ -5,7 +5,7 @@
   letter-spacing: 0.5px;
   line-height: 50px;
   font-size: 15px;
-  background-color: #3e4152;
+  background-color: #6b0e80;
   color: white;
   border-radius: 5px;
   text-transform: uppercase;
@@ -33,12 +33,11 @@
   }
 
   &.inverted {
-    background-color: #3e4152;
+    background-color: #6b0e80;
     color: #fff;
-    border: 1px solid #3e4152;
 
     &:hover {
-      background-color: #3e4152;
+      background-color: #420450;
       color: white;
       border: none;
     }
