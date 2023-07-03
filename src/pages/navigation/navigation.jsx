@@ -54,7 +54,7 @@ function ProfileMenu() {
             <MenuHandler>
                 <Button
                     variant="text"
-                    color="black"
+                    color="brown"
                     className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
                 >
                     <Avatar
@@ -125,10 +125,10 @@ function NavListMenu() {
     const renderItems = navListMenuItems.map(({ title, description, href }) => (
         <Link to={href} key={title}>
             <MenuItem>
-                <Typography variant="h6" color="black" className="mb-1">
+                <Typography variant="h6" color="brown" className="mb-1">
                     {title}
                 </Typography>
-                <Typography variant="small" color="black" className="font-normal">
+                <Typography variant="small" color="brown" className="font-normal">
                     {description}
                 </Typography>
             </MenuItem>
@@ -143,7 +143,7 @@ function NavListMenu() {
                     className="hidden w-[36rem] grid-cols-7 gap-3 overflow-hidden lg:grid"
                 >
                     <Card
-                        color="black"
+                        color="brown"
                         shadow={false}
                         variant="gradient"
                         className="col-span-3 grid h-full w-full place-items-center rounded-md"
@@ -187,7 +187,7 @@ function NavList() {
                         as="a"
                         href={href}
                         variant="small"
-                        color="black"
+                        color="brown"
                         className="font-semibold"
                     >
                         <MenuItem className="">
@@ -239,7 +239,7 @@ export default function Navigation() {
                 </div>
                 <IconButton
                     size="sm"
-                    color="black"
+                    color="brown"
                     variant="text"
                     onClick={toggleIsNavOpen}
                     className="ml-auto mr-2 lg:hidden"
