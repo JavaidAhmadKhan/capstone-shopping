@@ -4,7 +4,6 @@ import Authentication from "./pages/authentication/authentication";
 import Shop from "./pages/shop/shop";
 import Checkout from "./pages/checkout";
 
-
 const App = () => {
   return (
     <>
@@ -15,7 +14,7 @@ const App = () => {
         <Route path="checkout" element={<Checkout />} />
       </Routes>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

@@ -1,17 +1,77 @@
 /* eslint-disable react/prop-types */
 
-import CategoryItem from '../CategoryItem/CategoryItem'
-import './directory.styles.scss'
+import Hats from "../../assets/hats.jpg";
+import Sneakers from "../../assets/sneakers.webp";
+import Jeans from "../../assets/jeans.jpg";
+import Hoodies from "../../assets/hoodies.webp";
+import Shirts from "../../assets/shirts.webp";
+import Jackets from "../../assets/jackets.webp";
+import Mens from "../../assets/mens.webp";
+import Womens from "../../assets/womens.webp";
 
-const Directory = ({ categories }) => {
-    return (
-        <div className="directory-container">
-            {categories.map((category) => (
-                <CategoryItem key={category.id} category={category} />
-            ))}
+import "./directory.styles.scss";
+import DirectoryItem from "../DirectoryItem/DirectoryItem";
 
-        </div>
-    )
-}
+const categories = [
+  {
+    id: 1,
+    title: "Hats",
+    imageUrl: Hats,
+    route: 'shop/hats',
+  },
+  {
+    id: 2,
+    title: "Sneakers",
+    imageUrl: Sneakers,
+    route: 'shop/sneakers',
+  },
+  {
+    id: 3,
+    title: "Jeans",
+    imageUrl: Jeans,
+    route: 'shop/jeans',
+  },
+  {
+    id: 4,
+    title: "Hoodies",
+    imageUrl: Hoodies,
+    route: 'shop/hoodies',
+  },
+  {
+    id: 5,
+    title: "Shirts",
+    imageUrl: Shirts,
+    route: 'shop/shirts',
+  },
+  {
+    id: 6,
+    title: "Jackets",
+    imageUrl: Jackets,
+    route: 'shop/jackets',
+  },
+  {
+    id: 7,
+    title: "Mens",
+    imageUrl: Mens,
+    route: 'shop/mens',
+  },
+  {
+    id: 8,
+    title: "Womens",
+    imageUrl: Womens,
+    route: 'shop/womens',
+  },
+];
 
-export default Directory
+const Directory = () => {
+
+  return (
+    <div className="directory-container">
+      {categories.map((category) => (
+        <DirectoryItem key={category.id} category={category} />
+      ))}
+    </div>
+  );
+};
+
+export default Directory;
