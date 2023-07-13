@@ -17,54 +17,53 @@ const categories = [
     id: 1,
     title: "Hats",
     imageUrl: Hats,
-    route: 'shop/hats',
+    route: "shop/hats",
   },
   {
     id: 2,
     title: "Sneakers",
     imageUrl: Sneakers,
-    route: 'shop/sneakers',
+    route: "shop/sneakers",
   },
   {
     id: 3,
     title: "Jeans",
     imageUrl: Jeans,
-    route: 'shop/jeans',
+    route: "shop/jeans",
   },
   {
     id: 4,
     title: "Hoodies",
     imageUrl: Hoodies,
-    route: 'shop/hoodies',
+    route: "shop/hoodies",
   },
   {
     id: 5,
     title: "Shirts",
     imageUrl: Shirts,
-    route: 'shop/shirts',
+    route: "shop/shirts",
   },
   {
     id: 6,
     title: "Jackets",
     imageUrl: Jackets,
-    route: 'shop/jackets',
+    route: "shop/jackets",
   },
   {
     id: 7,
     title: "Mens",
     imageUrl: Mens,
-    route: 'shop/mens',
+    route: "shop/mens",
   },
   {
     id: 8,
     title: "Womens",
     imageUrl: Womens,
-    route: 'shop/womens',
+    route: "shop/womens",
   },
 ];
 
 const Directory = () => {
-
   return (
     <div className="directory-container">
       {categories.map((category) => (

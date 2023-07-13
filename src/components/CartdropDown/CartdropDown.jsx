@@ -18,7 +18,9 @@ const CartdropDown = () => {
         {cartItems.length ? (
           cartItems.map((item) => <CartItem key={item.id} cartItem={item} />)
         ) : (
-          <span className="text-[18px] text-center mt-12 text-[black]">cart is empty </span>
+          <span className="text-[18px] text-center mt-12 text-[black]">
+            cart is empty{" "}
+          </span>
         )}
       </div>
       <Button buttonType="inverted" onClick={goToCheckOutHandler}>
