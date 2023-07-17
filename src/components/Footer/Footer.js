@@ -1,4 +1,3 @@
-
 import "./footer.scss";
 
 const Footer = () => {
@@ -13,7 +12,7 @@ const Footer = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Javaid Khan{" "}
+        Javaid Khan
       </a>
     </div>
   );

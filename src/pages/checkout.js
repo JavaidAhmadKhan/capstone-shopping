@@ -13,7 +13,7 @@ const Checkout = () => {
         </div>
         <div className="">
           <span>Description</span>
-        </div> 
+        </div>
         <div className="">
           <span>Quantity</span>
         </div>
