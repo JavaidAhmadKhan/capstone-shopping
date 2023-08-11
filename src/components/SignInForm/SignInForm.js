@@ -73,7 +73,7 @@ const SignInForm = () => {
           name="password"
           value={password}
         />
-        <div className="buttons-container a">
+        <div className="buttons-container flex flex-col md:flex-col lg:flex-row">
           <Button type="submit">Sign In</Button>
           <Button type="button" buttonType="google" onClick={signInWithGoogle}>
             Google sign in
