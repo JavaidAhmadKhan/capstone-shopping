@@ -9,7 +9,6 @@ import Jackets from "../../assets/jackets.webp";
 import Mens from "../../assets/mens.webp";
 import Womens from "../../assets/womens.webp";
 
-import "./directory.styles.scss";
 import DirectoryItem from "../DirectoryItem/DirectoryItem";
 
 const categories = [
@@ -65,7 +64,7 @@ const categories = [
 
 const Directory = () => {
   return (
-    <div className="directory-container">
+    <div className="flex flex-wrap w-full justify-between">
       {categories.map((category) => (
         <DirectoryItem key={category.id} category={category} />
       ))}

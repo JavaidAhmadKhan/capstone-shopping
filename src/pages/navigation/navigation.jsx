@@ -26,11 +26,15 @@ import {
 import Logo from "../../assets/crown.svg";
 import CartIcon from "../../components/CartIcon/CartIcon";
 
-import { UserContext } from "../../contexts/user.context";
+import { selectCurrentUser } from '../../store/user/user.selector';
+import { selectIsCartOpen } from '../../store/cart/cart.selector';
+
 import { CartContext } from "../../contexts/cart.context";
 import { signOutUser } from "../../utils/firebase/firebase.utlis";
 import "./navigation.scss";
 import CartdropDown from "../../components/CartdropDown/CartdropDown";
+import { useSelector } from "react-redux";
+
 
 // profile menu component
 const profileMenuItems = [
@@ -41,11 +45,11 @@ const profileMenuItems = [
 ];
 
 function ProfileMenu() {
+
+  const currentUser = useSelector(selectCurrentUser);
+
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const closeMenu = () => setIsMenuOpen(false);
-
-  const { currentUser } = useContext(UserContext);
-  // const { isCartOpen } = useContext(CartContext)
 
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
@@ -64,9 +68,8 @@ function ProfileMenu() {
           />
           <ChevronDownIcon
             strokeWidth={2.5}
-            className={`h-3 w-3 transition-transform ${
-              isMenuOpen ? "rotate-180" : ""
-            }`}
+            className={`h-3 w-3 transition-transform ${isMenuOpen ? "rotate-180" : ""
+              }`}
           />
         </Button>
       </MenuHandler>
@@ -77,11 +80,10 @@ function ProfileMenu() {
             <MenuItem
               key={label}
               onClick={closeMenu}
-              className={`flex items-center gap-2 rounded ${
-                isLastItem
-                  ? "hover:bg-gray-200 focus:bg-gray-200 active:bg-black"
-                  : ""
-              }`}
+              className={`flex items-center gap-2 rounded ${isLastItem
+                ? "hover:bg-gray-200 focus:bg-gray-200 active:bg-black"
+                : ""
+                }`}
             >
               {currentUser ? (
                 <span onClick={signOutUser}> Signout</span>
@@ -193,9 +195,10 @@ function NavList() {
 }
 
 export default function Navigation() {
+  const isCartOpen = useSelector(selectIsCartOpen);
   const [isNavOpen, setIsNavOpen] = React.useState(false);
   const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
-  const { isCartOpen } = useContext(CartContext);
+
 
   // const { currentUser } = useContext(UserContext);
 
@@ -238,3 +241,4 @@ export default function Navigation() {
     </Navbar>
   );
 }
+

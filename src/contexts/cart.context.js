@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { createContext, useReducer } from "react";
 
-import { createAction } from "../utils/reducer/reducer";
+import { createAction } from "../utils/reducer/reducer.utils";
 
 const addCartItem = (cartItems, productToAdd) => {
   // find if cartItems contains productToAdd

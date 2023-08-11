@@ -3,8 +3,8 @@ import { useState } from "react";
 
 import {
   signInWithGooglePopup,
-  signInAuthUserEmailAndPassword,
-} from "../../utils/firebase/firebase.utlis";
+  signInAuthUserWithEmailAndPassword,
+} from "../../utils/firebase/firebase.utlis.js";
 
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
@@ -30,7 +30,7 @@ const SignInForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await signInAuthUserEmailAndPassword(email, password);
+      await signInAuthUserWithEmailAndPassword(email, password);
       resetFormFields();
     } catch (error) {
       switch (error.code) {
