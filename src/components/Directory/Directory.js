@@ -64,7 +64,7 @@ const categories = [
 
 const Directory = () => {
   return (
-    <div className="flex flex-wrap w-full justify-between">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
       {categories.map((category) => (
         <DirectoryItem key={category.id} category={category} />
       ))}
