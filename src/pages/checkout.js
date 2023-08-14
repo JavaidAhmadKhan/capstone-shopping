@@ -1,16 +1,14 @@
-import {
-  selectCartItems,
-  selectCartTotal,
-} from "../store/cart/cart.selector";
+import { selectCartItems, selectCartTotal } from "../store/cart/cart.selector";
 import CheckoutItem from "../components/CheckoutItem";
 import { useSelector } from "react-redux";
+import PaymentForm from "../components/PaymentForm";
 
 const Checkout = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
   return (
-    <div className="">
-      <div className="flex items-center py-6 px-6  gap-4 m-4  justify-between shadow-md rounded">
+    <div>
+      <div className="flex text-sm font-bold items-center  gap-2 md:gap-4 lg:gap-4 mx-6  justify-between  p-8 shadow-lg rounded bg-gray-100 mb-6">
         <div className="">
           <span>Product</span>
         </div>
@@ -30,9 +28,10 @@ const Checkout = () => {
       {cartItems.map((cartItem) => (
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
-      <span className=" flex items-end justify-end ml-auto px-4 text-[36px]">
+      <span className=" flex items-end justify-end ml-auto mx-6 text-lg font-body  mb-6">
         Total: {cartTotal}
       </span>
+      <PaymentForm />
     </div>
   );
 };

@@ -16,7 +16,7 @@ const CheckoutItem = ({ cartItem }) => {
   const removeItemHandler = () => dispatch(removeItemFromCart(cartItem));
 
   return (
-    <div className="flex  items-center  justify-between text-[18px] shadow-md rounded  m-4 p-4">
+    <div className="flex  items-center shadow-lg  bg-gray-100  justify-between text-[18px]  rounded  m-4 p-4">
       <img
         className="w-[10%] h-auto object-cover "
         src={imageUrl}

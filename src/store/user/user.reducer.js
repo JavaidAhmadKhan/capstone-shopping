@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 const INITIAL_STATE = {
   currentUser: null,
@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 };
 
 export const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState: INITIAL_STATE,
   reducers: {
     setCurrentUser(state, action) {
