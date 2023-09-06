@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import Spinner from "../Spinner/Spinner";
 import "./button.scss";
 
 const BUTTON_TYPE_CLASSES = {
@@ -6,13 +7,14 @@ const BUTTON_TYPE_CLASSES = {
   inverted: "inverted",
 };
 
-const Button = ({ children, buttonType, ...otherProps }) => {
+const Button = ({ children, buttonType, isLoading, ...otherProps }) => {
   return (
     <button
-      className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}
+      disabled={isLoading}
       {...otherProps}
+      className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}
     >
-      {children}
+      {isLoading ? <Spinner /> : children}
     </button>
   );
 };
