@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600&display=swap");
+
+body {
+  font-family: "Assistant", sans-serif;
+  background-color: #fff;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
