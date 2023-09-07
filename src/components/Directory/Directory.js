@@ -10,6 +10,8 @@ import Mens from "../../assets/mens.webp";
 import Womens from "../../assets/womens.webp";
 
 import DirectoryItem from "../DirectoryItem/DirectoryItem";
+import { useState } from "react";
+import Spinner from "../../components/Spinner/Spinner";
 
 const categories = [
   {
@@ -63,11 +65,16 @@ const categories = [
 ];
 
 const Directory = () => {
+  const [loading, setLoading] = useState(false);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
-      {categories.map((category) => (
-        <DirectoryItem key={category.id} category={category} />
-      ))}
+      {loading ? (
+        <Spinner />
+      ) : (
+        categories.map((category) => (
+          <DirectoryItem key={category.id} category={category} />
+        ))
+      )}
     </div>
   );
 };
