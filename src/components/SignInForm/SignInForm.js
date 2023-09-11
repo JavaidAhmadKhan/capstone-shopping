@@ -1,14 +1,14 @@
 /* eslint-disable react/no-unescaped-entities */
 import { useState } from "react";
 
-import {
-  signInWithGooglePopup,
-  signInAuthUserWithEmailAndPassword,
-} from "../../utils/firebase/firebase.utlis.js";
-
 import FormInput from "../FormInput/FormInput";
 import Button from "../Button/Button";
 import "./signin-form.scss";
+import {
+  emailSignInStart,
+  googleSignInStart,
+} from "../../store/user/user.action.js";
+import { useDispatch } from "react-redux";
 
 const defaultFormFields = {
   email: "",
@@ -16,6 +16,7 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
+  const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -24,33 +25,25 @@ const SignInForm = () => {
   };
 
   const signInWithGoogle = async () => {
-    signInWithGooglePopup();
+    dispatch(googleSignInStart());
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
-      await signInAuthUserWithEmailAndPassword(email, password);
+      dispatch(emailSignInStart(email, password));
       resetFormFields();
     } catch (error) {
-      switch (error.code) {
-        case "auth/wrong-password":
-          alert("Incorrect password for email");
-          break;
-        case "auth/user-not-found":
-          alert("No user associated with this email");
-          break;
-        default:
-          console.log(error);
-      }
+      console.log("user sign in failed", error);
     }
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+
     setFormFields({ ...formFields, [name]: value });
   };
-
   return (
     <div className="sign-in-container">
       <h2>Already have an account?</h2>
