@@ -5,7 +5,7 @@ import {
   clearItemFromCart,
   addItemToCart,
   removeItemFromCart,
-} from "../store/cart/cart.reducer";
+} from "../store/cart/cart.action";
 
 const CheckoutItem = ({ cartItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;

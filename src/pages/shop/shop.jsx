@@ -5,19 +5,13 @@ import "./shop.styles.scss";
 
 import CategoriesPreview from "../categories-preview";
 import Category from "../category/category";
-import { setCategories } from '../../store/categories/category.reducer';
-import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utlis";
+import { fetchCategoriesStart } from '../../store/categories/category.action';
 
 const Shop = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getCategoriesMap = async () => {
-      const categoriesArray = await getCategoriesAndDocuments('categories');
-      dispatch(setCategories(categoriesArray));
-    };
-
-    getCategoriesMap();
+    dispatch(fetchCategoriesStart());
   }, []);
 
   return (

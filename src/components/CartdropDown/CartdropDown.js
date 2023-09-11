@@ -10,7 +10,6 @@ import { useSelector } from "react-redux";
 import { selectCartItems } from "../../store/cart/cart.selector";
 
 const CartdropDown = () => {
-  // const { cartItems } = useContext(CartContext);
   const cartItems = useSelector(selectCartItems);
   const navigate = useNavigate();
 
