@@ -11,8 +11,6 @@ exports.handler = async (event) => {
       payment_method_types: ["card"],
     });
 
-    console.log(amount);
-
     return {
       statusCode: 200,
       body: JSON.stringify({ paymentIntent }),

@@ -14,10 +14,10 @@ const ProductCard = ({ product }) => {
   const addProductToCart = () => dispatch(addItemToCart(cartItems, product));
 
   return (
-    <div className=" p-2 border-2 shadow-lg rounded-lg">
+    <div className=" p-2 border-2 shadow-lg rounded-lg ">
       <div className="flex  items-center w-full flex-col h-full relative ">
         <img
-          className=" object-cover object-center rounded-lg transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300 "
+          className=" object-cover object-center rounded-lg transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110 duration-300 w-full h-[320px] "
           src={imageUrl}
           alt={`${name}`}
         />
