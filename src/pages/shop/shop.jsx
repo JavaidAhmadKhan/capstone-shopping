@@ -5,7 +5,7 @@ import "./shop.styles.scss";
 
 import CategoriesPreview from "../categories-preview";
 import Category from "../category/category";
-import { fetchCategoriesStart } from '../../store/categories/category.action';
+import { fetchCategoriesStart } from "../../store/categories/category.action";
 
 const Shop = () => {
   const dispatch = useDispatch();

@@ -1,5 +1,4 @@
-/* eslint-disable react/prop-types */
-import Spinner from "../Spinner/Spinner";
+import SpinnerPayment from "../SpinnerPayment/SpinnerPayment";
 import "./button.scss";
 
 const BUTTON_TYPE_CLASSES = {
@@ -14,7 +13,13 @@ const Button = ({ children, buttonType, isLoading = false, ...otherProps }) => {
       {...otherProps}
       className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}
     >
-      {isLoading ? <Spinner /> : children}
+      {isLoading ? (
+        <div className="absolute top-[255px]">
+          <SpinnerPayment />
+        </div>
+      ) : (
+        children
+      )}
     </button>
   );
 };
