@@ -9,6 +9,7 @@ import {
   googleSignInStart,
 } from "../../store/user/user.action.js";
 import { useDispatch } from "react-redux";
+import { Navigate } from "react-router-dom";
 
 const defaultFormFields = {
   email: "",
@@ -17,6 +18,7 @@ const defaultFormFields = {
 
 const SignInForm = () => {
   const dispatch = useDispatch();
+  const [redirect, setRedirect] = useState(false);
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
 
@@ -44,6 +46,11 @@ const SignInForm = () => {
 
     setFormFields({ ...formFields, [name]: value });
   };
+
+  if (redirect) {
+    return <Navigate to='/' />
+  }
+
   return (
     <div className="sign-in-container">
       <h2>Already have an account?</h2>

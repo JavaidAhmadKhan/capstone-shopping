@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-key */
-
 import Button from "../Button/Button";
 import CartItem from "../CartItem/CartItem";
 
@@ -8,14 +6,15 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import { selectCartItems } from "../../store/cart/cart.selector";
+import { useCallback } from "react";
 
 const CartdropDown = () => {
   const cartItems = useSelector(selectCartItems);
   const navigate = useNavigate();
 
-  const goToCheckOutHandler = () => {
+  const goToCheckOutHandler = useCallback(() => {
     navigate("/checkout");
-  };
+  }, []);
   return (
     <div className="absolute w-[240px] h-[340px] flex flex-col p-[20px] bg-white top-[90px] right-[40px] z-10 border-2 border-gray-400 rounded">
       <div className="h-[240px] flex flex-col overflow-scroll">
